@@ -1,5 +1,5 @@
 //Middleware to protect route
-import jwt from "jsonwebtoken";  // ✅ Required import
+import jwt from "jsonwebtoken";
 import User from "../models/User.js";
 import { decode } from "jsonwebtoken";
 
