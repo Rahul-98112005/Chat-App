@@ -1,7 +1,7 @@
-import Message from "../models/Message";
-import User from "../models/User";
+import Message from "../models/Message.js";
+import User from "../models/User.js";
 import cloudinary from "../lib/clodinary.js";
-import { io, userSocketMap, userSocketMsp } from "../server.js"
+import { io, userSocketMap } from "../server.js"
 
 
 // Get all LogedIn User

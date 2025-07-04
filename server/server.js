@@ -20,11 +20,11 @@ export const userSocketMap = {};  // { userId: socketId }
 
 // Socket.io connection handler
 io.on("connection", (socket) => {
-    const userId = socket.handShake.query.userId;
+    const userId = socket.handshake.query.userId;
     console.log("User Connected", userId);
 
     if(userId) {
-        useSocketMap[userId] = socket.id
+        userSocketMap[userId] = socket.id
     }
 
     //Emit online users to all connections
