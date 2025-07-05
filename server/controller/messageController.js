@@ -1,15 +1,15 @@
-import Message from "../models/Message";
-import User from "../models/User";
+import Message from "../models/Message.js";
+import User from "../models/User.js";
 import cloudinary from "../lib/clodinary.js";
-import { io, userSocketMap, userSocketMsp } from "../server.js"
+import { io, userSocketMap } from "../server.js"
 
 
 // Get all LogedIn User
 export const getUserForSidebar = async (req, res) => {
 
     try {
-        const userId = req.user_id;
-        const filteredUsers = await User.find({_id: {$ne: userId}}).select("-password");
+        const userId = req.user._id;
+        const filteredUsers = await User.find({ _id: {$ne: userId}} ).select("-password");
 
 
         // Count number of messages not seen
@@ -51,7 +51,7 @@ export const getMessages = async (req,res) => {
         await Message.updateMany({senderId: selectedUserId, receiverId:myId}, {seen:true})
 
         res.json({
-            success: true, message
+            success: true, messages
         })
 
 
@@ -70,7 +70,7 @@ export const getMessages = async (req,res) => {
 export const markMessageAsSeen = async (req,res) => {
     try {
         const {id} = req.params
-        awaitMessage.findByIdAndUpdate(id,{seen:true})
+        await Message.findByIdAndUpdate(id,{seen:true})
         res.json({success: true})
     }
     catch (error) {
