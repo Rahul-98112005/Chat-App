@@ -85,8 +85,7 @@ const SideBar = () => {
             }`}
           >
             <img
-              src={user?.profilePic || assets.avatar_icon}
-              alt=""
+              src={user?.profilePic?.trim() ? user.profilePic : assets.avatar_icon}              alt=""
               className="w-[35px] aspect-[1/1] rounded-full"
             />
             <div className="flex flex-col leading-5">
